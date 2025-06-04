@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro | Zeep Gestão</title>
+  <link rel="stylesheet" href="../assets/fonts/poppins.css" />
+  <link rel="stylesheet" href="lingin.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <form id="registerForm" class="auth-form">
+      <h2>Crie sua conta</h2>
+
+      <!-- Nome completo -->
+      <div class="input-group">
+        <label for="name">Nome completo</label>
+        <input type="text" id="name" required />
+      </div>
+
+      <!-- Apelido (exibição no app) -->
+      <div class="input-group">
+        <label for="nickname">Apelido (como deseja ser chamado)</label>
+        <input type="text" id="nickname" required />
+      </div>
+
+      <!-- E-mail -->
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required />
+      </div>
+
+      <!-- Senha -->
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" minlength="6" required />
+          <button type="button" id="togglePassword">👁</button>
+        </div>
+      </div>
+
+      <!-- Lembrar-me -->
+      <div class="input-group checkbox-group">
+        <input type="checkbox" id="remember" />
+        <label for="remember">Lembrar-me neste dispositivo</label>
+      </div>
+
+      <!-- Login biométrico (simulação) -->
+      <div class="input-group biometric-group">
+        <p>Ativar login com biometria?</p>
+        <button type="button" class="biometric-button">🔒 Ativar biometria</button>
+      </div>
+
+      <!-- Botão registrar -->
+      <button type="submit" class="auth-button">
+        <span class="button-text">Registrar</span>
+        <span class="button-loader hidden">⏳</span>
+      </button>
+
+      <!-- Login com terceiros -->
+      <div class="third-party-login">
+        <p>Ou entre com:</p>
+        <button type="button" class="google-login">🔵 Google</button>
+        <button type="button" class="apple-login">⚪ Apple</button>
+      </div>
+    </form>
+
+    <div class="auth-footer">
+      Já tem conta? <a href="index.html">Faça login</a>
+    </div>
+  </div>
+
+  <script src="login.js" type="module"></script>
+  <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = type;
+      togglePassword.textContent = type === 'password' ? '👁' : '🙈';
+    });
+  </script>
+</body>
+</html>

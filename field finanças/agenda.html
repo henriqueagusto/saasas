@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Plārufrda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="agenda.css">
+</head>
+<body>
+    <div class="agenda-app">
+        <!-- Cabeçalho Simplificado -->
+        <header class="app-header">
+            <div class="header-left">
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="app-title">
+                    <i class="fas fa-calendar-days"></i>
+                    <span>Agenda</span>
+                </h1>
+            </div>
+            <div class="header-center">
+                <button class="nav-btn" id="prev-period">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 class="current-period">Agosto 2023</h2>
+                <button class="nav-btn" id="next-period">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="header-right">
+                <button class="today-btn" id="go-today">Hoje</button>
+                <div class="view-switcher">
+                    <button class="view-btn active" data-view="day">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button class="view-btn" data-view="week">
+                        <i class="fas fa-calendar-week"></i>
+                    </button>
+                    <button class="view-btn" data-view="month">
+                        <i class="fas fa-calendar"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Visualização Principal -->
+        <main class="calendar-view">
+            <!-- Visualização Diária (Padrão) -->
+            <div class="day-view active" id="day-view">
+                <div class="day-header">
+                    <div class="day-name">Quarta-feira</div>
+                    <div class="day-date">21 de Agosto</div>
+                </div>
+                <div class="time-column">
+                    <!-- Coluna de horas será gerada via JS -->
+                </div>
+                <div class="events-column">
+                    <!-- Eventos serão renderizados via JS -->
+                </div>
+            </div>
+
+            <!-- Visualização Semanal -->
+            <div class="week-view" id="week-view">
+                <div class="week-header">
+                    <!-- Cabeçalho dos dias será gerado via JS -->
+                </div>
+                <div class="week-grid">
+                    <!-- Grade de eventos será gerada via JS -->
+                </div>
+            </div>
+
+            <!-- Visualização Mensal -->
+            <div class="month-view" id="month-view">
+                <div class="month-grid">
+                    <!-- Calendário mensal será gerado via JS -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Botão de Ação Flutuante -->
+        <button class="fab">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- Modal Simplificado -->
+        <div class="modal-overlay hidden" id="event-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Novo Evento</h3>
+                    <button class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="event-form">
+                    <div class="form-section">
+                        <input type="text" class="event-title" placeholder="Título do evento" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-section">
+                            <label>Data de início</label>
+                            <input type="date" class="event-date" required>
+                        </div>
+                        <div class="form-section">
+                            <label>Hora</label>
+                            <input type="time" class="event-time">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section compact">
+                        <label>
+                            <input type="checkbox" class="all-day"> Dia inteiro
+                        </label>
+                        <label>
+                            <input type="checkbox" class="recurring"> Recorrente
+                        </label>
+                    </div>
+                    
+                    <div class="recurrence-options hidden">
+                        <select class="recurrence-type">
+                            <option value="daily">Diariamente</option>
+                            <option value="weekly">Semanalmente</option>
+                            <option value="monthly">Mensalmente</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary">Cancelar</button>
+                        <button type="submit" class="btn primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="agenda.js"></script>
+</body>
+</html>
